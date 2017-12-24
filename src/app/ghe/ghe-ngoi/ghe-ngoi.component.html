@@ -1,0 +1,7 @@
+<button class='ghe' 
+      [ngClass]="{ 'chua-dat': !statusGhe, 'dang-chon' : statusGhe,'da-dat':chose }" 
+      (click)='DatGhe(statusGhe)'
+      [disabled]='chose'
+      >
+      {{numOrder}}
+</button>

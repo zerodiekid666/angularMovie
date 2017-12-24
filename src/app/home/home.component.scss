@@ -1,0 +1,714 @@
+
+$boder-color : #29B6F6;
+$bg-color:  #0288D1;
+$btn-color: #039BE5;
+$logo-color: #3ebfff;
+// Reset bootstrap
+// Carousel
+.carousel-control{
+  background: none;
+  color:#29B6F6;
+}
+
+.carousel-caption{
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.carousel-caption .h3,.p{
+  position: relative;
+  right: 0;
+  left: 0;
+  top:40%;
+  transform: translateY(-50%);
+  font-family: 'Nunito', sans-serif;
+  font-weight: bold;
+  color: white;
+}
+
+.carousel-caption .h3{
+  font-size: 5em;
+}
+
+.logo-color{
+  color: $logo-color;
+}
+
+.carousel-caption .p{
+  font-size: 2em;
+}
+
+.animated{
+  animation-duration: 2s;
+  -webkit-animation-duration: 2s;
+}
+
+.carousel-indicators li{
+  border:1px solid #039BE5;
+}
+
+
+.carousel-indicators .active{
+  background: #039BE5;
+
+}
+
+
+
+
+//**********************************************
+// ****** Degign list Movie css - START ********
+//**********************************************
+.topTitle {
+  border-bottom: 5px solid white;
+  padding-bottom: 20px;
+}
+
+.contain-listMovie {
+  padding: 0;
+  overflow: hidden !important;
+  position: relative
+} 
+
+// ******* Design for list movie - start
+.contain-listMovie::before {
+  width: 100px;
+  height: 500px;
+  position: absolute;
+  top: 0;
+  left: 170%;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.1);
+  transform: skewX(45deg);
+  transition: all .5s ease-out;
+}
+
+.contain-listMovie:hover::before {
+  transition-delay: .2s;
+  left: -170%;
+} 
+
+// ******* Design for list movie - end
+.container-fluid {
+  font-family: 'Nunito', sans-serif;
+  background: $bg-color;
+}
+
+.jumbotron {
+  background: transparent;
+  color: white;
+}
+
+.panel {
+  transition: box-shadow 1.2s ease-out;
+  box-shadow: none;
+  margin-bottom: 60px;
+  cursor: pointer;
+}
+
+
+
+.panel:hover {
+  box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.panel-heading {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.panel-footer{
+      cursor: pointer;
+      font-size: 20px;
+      padding: 15px;
+      font-weight: bold;
+}
+
+.rs-panel {
+  background: $boder-color;
+  border: 5px solid $bg-color;
+  color: white;
+}
+
+.rs-btn {
+  background: rgba(41, 188, 246, 0.692);
+}
+
+.listMovie {
+  width: 100%;
+  
+  //filter: grayscale(50%); 
+  //filter: blur(.5px);
+  transition: 1s;
+  height: 400px;
+}
+.panel:hover .listMovie {
+  //filter: grayscale(0); 
+  //filter: blur(0);
+  transform: scale(1.1);
+}
+
+.listTitle {
+  position: absolute;
+  bottom: 0;
+  margin: 0;
+  text-align: center;
+  padding: 10px 0;
+  width: 100%;
+  transform-origin: bottom;
+  transition: .5s;
+  transform: perspective(1000px) rotateX(90deg);
+}
+
+.panel:hover .listTitle {
+  transform: perspective(100px) rotateX(0deg);
+  transition-delay: 0.5s;
+} 
+
+//**********************************************
+// ****** Degign list Movie css - END **********
+//**********************************************
+
+
+
+
+
+
+//***************************
+// ****** CSS form - START
+//***************************
+.box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  padding: 40px;
+  background: rgba(0,0,0,.8);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0,0,0,.5);
+  border-radius: 10px;
+}
+.box h1 {
+  margin: 0 0 30px;
+  padding: 0;
+  color: #fff;
+  color: aqua;
+  text-align: center;
+}
+.box h2 {
+  margin: 0 0 30px;
+  padding: 0;
+  color: #fff;
+  color: $logo-color;
+  text-align: center;
+}
+
+.box .inputBox {
+  position: relative;
+}
+
+.box .inputBox input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff !important;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+}
+
+.box .inputBox label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  pointer-events: none;
+  transition: .5s; 
+}
+
+.box .inputBox input:focus ~ label,
+.box .inputBox input:valid ~ label {
+  top: -20px;
+  left: 0;
+  color: $logo-color;
+  font-size: 12px;
+}
+
+.box input[type="submit"] {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  background: #03a9f4;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+  background-color: transparent !important;
+  background-image: none;
+  color: rgb(0, 0, 0);
+}
+
+
+input[_ngcontent-c2]:-webkit-autofill, textarea[_ngcontent-c2]:-webkit-autofill, select[_ngcontent-c2]:-webkit-autofill {
+  background-color: transparent !important;
+  background-image: none;
+  color: black;
+}
+//***************************
+// ****** CSS form - END
+//***************************
+
+
+
+
+//**********************************************
+// Owl Carousl - Start
+//**********************************************
+img#owl-img{
+  border:6px solid $logo-color;
+  height:300px;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
+  transition: .5s ease-in-out;
+}
+
+
+img#owl-img:hover{
+  border:0px solid $logo-color;
+  transition: .5s ease-in-out;
+}
+
+
+//**********************************************
+// Owl Carousl - End
+//**********************************************
+
+
+
+
+
+.slideanim {visibility:hidden;}
+.slideAnim {
+    animation-name: slide;
+    -webkit-animation-name: slide;
+    animation-duration: 1.5s;
+    -webkit-animation-duration: 1.5s;
+    visibility: visible;
+    
+}
+@keyframes slide {
+  0% {
+    opacity: 0;
+    // transform: translateY(70%);
+    transform: scale(0);
+  } 
+
+  40%{
+    opacity: .7;
+    // transform: translateY(70%);
+    transform: scale(1.1);
+  }
+  
+  70%{
+    opacity: 1;
+    // transform: translateY(70%);
+    transform: scale(.9);
+  }
+
+  100% {
+    opacity: 1;
+    // transform: translateY(0%);
+    transform: scale(1);
+  }
+}
+@-webkit-keyframes slide {
+  0% {
+    opacity: 0;
+    // -webkit-transform: translateY(70%);
+    transform: scale(0);
+  } 
+  
+  40%{
+    opacity: .7;
+    // transform: translateY(70%);
+    transform: scale(1.1);
+  }
+
+  70%{
+    opacity: 1;
+    // transform: translateY(70%);
+    transform: scale(.9);
+  }
+
+  100% {
+    opacity: 1;
+    // -webkit-transform: translateY(0%);
+    transform: scale(1);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// Queries media
+/* 
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+
+@media (min-width: 1281px) {
+  
+  //CSS
+  
+}
+
+/* 
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  
+  .listMovie{
+    height: 320px !important;
+  }
+  
+}
+
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  
+  .listMovie{
+    height: 320px !important;
+  }
+  
+  img#owl-img {
+    height: 240px;
+  }
+  
+}
+
+/* 
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  
+  //CSS
+  .carousel-caption .h3,.p{
+      top:37%;
+  }
+  
+  .carousel-caption .h3{
+      font-size: 3em;
+  }
+  
+  .carousel-caption .p{
+      font-size: 2em;
+  }
+
+  img#owl-img {
+    width: 200px;
+    height: 240px;
+    margin-left:0%;
+  }
+  
+}
+
+/* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 481px) and (max-width: 767px) {
+  
+  .carousel-caption .h3,.p{
+      position: relative;
+      right: 0;
+      left: 0;
+      top:30%;
+      transform: translateY(-50%);
+      font-family: 'Nunito', sans-serif;    
+      font-weight: bold;
+      text-shadow: none;
+  }
+  
+  .carousel-caption .h3{
+      font-size: 3em;
+  }
+  
+  .carousel-caption .p{
+      font-size: 2em;
+      
+  }
+
+  .my-style{
+    margin: auto;
+    width: 75%;
+  }
+
+}
+
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+  
+  //CSS
+  .carousel-caption .h3,.p{
+      position: relative;
+      right: 0;
+      left: 0;
+      top:25%;
+      transform: translateY(-50%);
+      font-family: 'Nunito', sans-serif;    
+      font-weight: bold;
+      text-shadow: none;
+  }
+  
+  .carousel-caption .h3{
+      font-size: 2em;
+  }
+  
+  .carousel-caption .p{
+      font-size: 2em;
+      display: none;
+  }
+  
+
+  .listMovie{
+    height: 330px !important;
+  }
+
+  img#owl-img {
+    width:130px;
+    height: 150px;
+  }
+
+
+
+}
+
+
+
+
+
+// ************************************
+// ******* Css loading - Start
+// ************************************
+#mainLoad{
+  position: absolute;
+  height: 70px;
+  width:70px;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  overflow: hidden;
+  font-size: 12px;
+  color:white;
+  line-height: 30px;
+  z-index: 9999;
+  font-weight: bold;
+}
+
+#d1{
+  height: 25px;
+  width:25px;
+  background: $logo-color;
+  position: absolute;
+  top:25px;
+  left:0px;
+}
+#d2{
+  height: 25px;
+  width:25px;
+  background: $logo-color;
+  position: absolute;
+  top:25px;
+  left:25px;
+  animation: effect1 1s infinite linear;
+}
+
+#d3{
+  height: 25px;
+  width:25px;
+  background: $logo-color;
+  position: absolute;
+  top:0px;
+  left:0px;
+  animation: effect2 1s infinite linear;
+}
+
+#d4{
+  height: 25px;
+  width:25px;
+  background: $logo-color;
+  position: absolute;
+  top:0px;
+  left:25px;
+  animation: effect3 1s infinite linear;
+}
+
+#bigsqr{
+  position: relative;
+  width:50px;
+  height: 50px;
+  overflow: hidden;
+  transform-origin: bottom left;
+  animation: bigSqrEffect 1s infinite linear;
+}
+
+
+@-webkit-keyframes effect1{
+  0%{
+    transform: translateY(-50px);
+  }
+  25%{
+    transform: translateY(0px);
+  }
+  100%{
+    transform: translateY(0px);
+  }
+}
+
+@-webkit-keyframes effect2{
+  0%{
+    transform: translateY(-50px);
+  }
+  50%{
+    transform: translateY(0px);
+  }
+  100%{
+    transform: translateY(0px);
+  }
+}
+
+@-webkit-keyframes effect3{
+  0%{
+    transform: translateY(-50px);
+  }
+  75%{
+    transform: translateY(0px);
+  }
+  100%{
+    transform: translateY(0px);
+  }
+}
+
+@-webkit-keyframes bigSqrEffect{
+  0%{
+    transform: scale(1);
+  }
+  90%{
+    transform: scale(1);
+  }
+  100%{
+    transform: scale(0.5);
+  }
+}
+// ************************************
+// ******* Css loading - END
+// ************************************
+
+
+
+
+
+
+.load{
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: $boder-color;
+  position: relative;
+}
+
+.loader {
+  
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+  position: fixed;
+  left: 45%;
+  top:45%;
+  transform:  translate(-50%,-50%);
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+
+
+
+
+footer {
+  position: relative;
+  z-index: -2;
+  height: 300px;
+  background: none repeat scroll 0% 0% #31353A;
+  font-size: 12px;
+  color: #CCC;
+  text-align: center;
+}
+footer h1 {
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 110px;
+  margin-left: -400px;
+  width: 800px;
+  list-style: outside none none;
+  text-align: center;
+  font-weight: bold;
+  color: #FFF;
+  font-size: 2.125rem;
+  
+}
+
+footer h4{
+  position: fixed;
+  bottom: 3%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  
+}
+
+footer p{
+  position: fixed;
+  bottom: 1%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  
+}

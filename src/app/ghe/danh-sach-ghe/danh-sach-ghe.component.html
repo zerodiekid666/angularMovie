@@ -1,0 +1,148 @@
+<!-- <div *ngFor='let ghe of Ghe'>
+    Số ghế : {{ghe.NumOrder}};
+</div> -->
+
+
+<div id="mainLoad">
+  <div id="bigsqr">
+      <div id="d1"></div>
+      <div id="d2"></div>
+      <div id="d3"></div>
+      <div id="d4"></div>
+  </div>
+  LOADING
+</div>
+
+<div class="container" *ngIf="_data && _data2" style="margin-top:60px">
+    
+ 
+  
+
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style='margin-bottom:20px;margin-top:60px;'>
+        <h1 class='titleMovie animated zoomIn'>{{movieDetail.Title}}</h1>
+        <div class="screen animated slideInDown">
+          <img src="../../assets/screen.png" alt="screenPNG" width='100%'>
+        </div>
+    </div>
+  
+    <div class="row">
+      
+      <!-- <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+        
+      </div> -->
+
+      
+      
+        <div class="wrap-ghe">
+          <div class="row animated slideInLeft">
+                <app-ghe-ngoi 
+                  *ngFor='let ghe of Ghe | slice:0:9' 
+                  (evenDatGhe)='DatGheParent($event,ghe.NumOrder,ghe.Price,ghe.SeatID)'
+                  [chose]='ghe.Status'
+                  [numOrder]='ghe.NumOrder'
+                ></app-ghe-ngoi>  
+          </div>
+      
+          <div class="row animated slideInRight">
+            <app-ghe-ngoi 
+              *ngFor='let ghe of Ghe | slice:9:18' 
+              (evenDatGhe)='DatGheParent($event,ghe.NumOrder,ghe.Price,ghe.SeatID)'
+              [chose]='ghe.Status'
+              [numOrder]='ghe.NumOrder'
+            ></app-ghe-ngoi>  
+          </div>
+      
+          <div class="row animated slideInLeft">
+            <app-ghe-ngoi 
+              *ngFor='let ghe of Ghe | slice:18:27' 
+              (evenDatGhe)='DatGheParent($event,ghe.NumOrder,ghe.Price,ghe.SeatID)'
+              [chose]='ghe.Status'
+              [numOrder]='ghe.NumOrder'
+            ></app-ghe-ngoi>  
+          </div>
+      
+          <div class="row animated slideInRight">
+            <app-ghe-ngoi 
+              *ngFor='let ghe of Ghe | slice:27' 
+              (evenDatGhe)='DatGheParent($event,ghe.NumOrder,ghe.Price,ghe.SeatID)'
+              [numOrder]='ghe.NumOrder'
+              [chose]='ghe.Status'
+            ></app-ghe-ngoi>  
+          </div>
+      
+          <div class="row animated fadeIn" style="margin-top:20px">
+              <div class="wrap-chu-thich">
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                    <div class='icon-chu-thich da-dat'></div>
+                    <div class='chu-thich'>Đã đặt</div>
+                </div>
+      
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                  <div class='icon-chu-thich chua-roi'></div>
+                  <div class='chu-thich'>Chưa đặt</div>
+                </div>
+      
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                  <div class='icon-chu-thich dang-chon'></div>
+                  <div class='chu-thich'>Đang chọn</div>
+                </div>
+            </div>
+          </div>
+          
+          <div class="row animated slideInUp" style="margin-top:20px">
+            
+              <div class="chu-thich-1">
+                  <div class='chu-thich-1a'>Số ghế còn trống : 
+                   {{soGheChuaDat}}
+                  </div>
+                  <!-- <div class='chu-thich-1a'>Số ghế đã đặt : 
+                   {{soGheDaDat}}
+                  </div> -->
+              </div>
+              <div class='chu-thich-1'>Số ghế bạn đặt : 
+                  <span style='font-weight:bold;'>{{idGheDaDat.length}}</span>
+                </div>
+            <div class='chu-thich-1'>Vị trí bạn đặt ghế 
+              <div>
+                
+                <div style='display:inline-block; margin-right:6px; color:green; font-weight:bold'
+                  *ngFor='let gheID of idGheDaDat'         
+                >
+                {{gheID ? gheID.NumOrder : "chưa có"}}
+                </div>
+                
+              </div>
+            </div>
+
+           
+            <div class='chu-thich-1'>Tổng giá : 
+              <span
+                style='font-weight:bold;'
+              >{{ price | currency: "VND":true:"1.3-3"}}</span></div>
+      
+            
+            <!-- <button type="button" class="btn btn-primary" >Đặt ghế</button> -->
+            
+            <button type="button" 
+            style='margin-top:16px; padding:11px 60px;'
+            class="btn btn-lg btn-success datGhe" (click)='BookTicket()'>Đặt ghế</button>
+            
+            
+      
+          </div>
+        </div>    
+    
+    </div>
+
+
+    <div class="imgMovieDetail animated bounceInDown">
+      <img [src]="apiImage + movieDetail?.Image" alt="{{movieDetail.Title}}">
+      <a (click)='GoBack()'>Lịch chiếu khác</a>
+    </div>
+</div>
+
+
+
+
+    
+

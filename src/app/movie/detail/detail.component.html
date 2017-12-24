@@ -1,0 +1,174 @@
+<ng-template>
+    <app-danh-sach-ghe></app-danh-sach-ghe>
+</ng-template>
+
+
+<div class="load" style='display:none;'>
+  <div class="loader"></div>
+</div>
+
+
+<div id="mainLoad">
+  <div id="bigsqr">
+      <div id="d1"></div>
+      <div id="d2"></div>
+      <div id="d3"></div>
+      <div id="d4"></div>
+  </div>
+  LOADING
+</div>
+
+
+
+
+
+<div class="container-fluid" id="paddingTop" *ngIf='_data'>
+    
+  <div class="jumbotron">
+    <h1 class='text-center topTitle animated fadeInDown '>{{MovieDetail.Title}}</h1> 
+          <br><br><br>
+
+    <div class="row">
+        
+      
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <div class="wrap-trailer animated pulse">
+            <iframe 
+            width="600px" height="320px" [src]="safeUrl" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </div>
+      
+
+      <div class="col-xs-12 col-sm-6 col-md-5 col-lg-4 animated zoomIn my-style-query my-style">
+        
+        <div class="rs-panel panel">
+          <div class="rs-panel panel-body contain-listMovie">
+            <img class='listMovie' [src]="apiImage + MovieDetail.Image" alt="{{MovieDetail.Title}}">
+            <h3 class='rs-btn listTitle'>{{MovieDetail.Title}}</h3>
+          </div>
+
+          <div class="rs-panel panel-footer text-center" data-toggle="modal" data-target="#myModal">
+              <!-- Click to pop-up modal -->
+              <a>Đặt Vé</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-sm-6 col-md-7 col-lg-8">
+        <h2>Nội dung phim :</h2>
+        <h3>{{MovieDetail.Description}}</h3>
+        <div class="row">
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <h2 class='animated fadeInUp'>Nhà phát hành</h2>    
+          </div>
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <h2 class='animated fadeInRightBig'>{{MovieDetail.Producer}}</h2>    
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <h2 class='animated fadeInUp'>Đạo diễn</h2>    
+          </div>
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <h2 class='animated fadeInRightBig'>{{MovieDetail.Director}}</h2>    
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <h2 class='animated fadeInUp'>Thể loại</h2>    
+          </div>
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <h2 class='animated fadeInRightBig'>{{MovieDetail.GenreName}}</h2>    
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <h2 class='animated fadeInUp'>Ngày phát hành</h2>    
+          </div>
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <h2 class='animated fadeInRightBig'>{{MovieDetail.ReleaseDate | date:'d/M/y h:mm a'}}</h2>    
+          </div>
+        </div>
+      </div>
+    
+    </div>
+
+    <div class="row" *ngIf='_data'>
+        
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
+            <div class='wrap-show-time'>
+              <h3 class='show-time-title'>Chọn lịch chiếu</h3>
+              <div class="contain-show-time">
+                  <label *ngFor='let item of showTimes' class="show-time" [routerLink]="['/ghe']"
+                      [queryParams]='{movieID:MovieID, movieGroup:MovieGroup, showTimeID: item.ShowTimeID}'
+                  >
+                      <p>{{item.StartDate}}</p>
+                  </label>
+              </div>
+          </div>
+        </div>
+        
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- ******************************************** -->
+      <!--******************* Modal pop-up - START -->
+      <!-- ******************************************** -->
+      <div class="modal fade" id="myModal" role="dialog" style="display: none;">
+          <div class="modal-dialog">
+          
+            <!-- Modal content-->
+            <div class="box">
+              <h2>Đăng nhập tài khoản</h2>
+              <form
+                  #frmLogin='ngForm' 
+                  (ngSubmit)='LoginUsers(frmLogin.value)'
+              >
+                  <div class="inputBox">
+                      <input type="text" value=""
+                            id="UserName"
+                            name="UserName" 
+                            #UserName='ngModel' 
+                            ngModel 
+                            required=""
+                      >
+                      <label>Tên đăng nhập</label>
+                  </div>
+                  <div class="inputBox">
+                      <input type="password" value="" 
+                            id="Password" 
+                            name="Password" 
+                            #Password='ngModel' 
+                            ngModel 
+                            required=""
+                      >
+                      <label>Mật khẩu</label>
+                  </div>
+                  <div class="form-group">
+                    <!-- Groups -->
+                    <select name="GroupID" 
+                      #GroupID="ngModel"
+                      ngModel
+                      class='form-control'
+                    >
+                        <option *ngFor='let group of groups' [value]="group.ID">{{group.Name}}</option>
+                    </select>
+                  </div>
+                  <input type="submit" name="" value="Đăng nhập">
+                  <a routerLink='/form/signup'>Đăng Kí</a>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- ******************************************** -->
+        <!-- Modal pop-up - END -->
+        <!-- ******************************************** -->
+
+

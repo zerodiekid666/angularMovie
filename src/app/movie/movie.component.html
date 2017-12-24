@@ -1,0 +1,134 @@
+<div class="load" style='display:none;'>
+  <div class="loader"></div>
+</div>
+
+
+<div id="mainLoad">
+  <div id="bigsqr">
+      <div id="d1"></div>
+      <div id="d2"></div>
+      <div id="d3"></div>
+      <div id="d4"></div>
+  </div>
+  LOADING
+</div>
+
+<!-- ***********************************************************-->
+<!--******************** List Movie - Start ********************-->
+<!-- ***********************************************************-->
+<div class="container-fluid" id="paddingTop" *ngIf='_data'>
+  <div class="jumbotron">
+    <h1 class='text-center topTitle'>Phim Đang Chiếu</h1>
+
+    <form class="wrapper animated bounceInUp">
+      <!-- Input search Movie -->
+      <input class="search searchBar" type="text" id="search" placeholder="searching movies..." [(ngModel)]='term.value' #term
+        [ngModelOptions]="{standalone: true}" />
+
+    </form>
+
+
+
+
+    <br>
+    <br>
+
+
+
+
+    <div class="row my-style">
+
+
+
+      <!-- ************************** -->
+      <!-- Show Movie List - START -->
+      <!-- ************************** -->
+      <div class='col-md-4 col-sm-6 col-xs-12' *ngFor='let movie of MovieList | searchMovie:term.value'>
+        <div class="rs-panel panel animated zoomIn">
+          <!-- <div class="rs-panel panel-heading text-center">Batman</div> -->
+          <!-- Truyền 1 tham so routerlink -->
+          <!-- <div class="rs-panel panel-body contain-listMovie" [routerLink]="['/moviedetail', movie.ID]">
+            <img class='listMovie' [src]="urlImage + movie.Image" [alt]="movie.Title">
+            <h3 class=' rs-btn listTitle'>{{movie.Title}}</h3>
+          </div> -->
+
+          <!-- Truyền nhiều tham so routerlink -->
+          <div class="rs-panel panel-body contain-listMovie" 
+              [routerLink]="['/moviedetail']"
+              [queryParams]="{id:movie.ID, groupID: MovieGroup}"
+
+          >
+            <img class='listMovie' [src]="urlImage + movie.Image" [alt]="movie.Title">
+            <h3 class=' rs-btn listTitle'>{{movie.Title}}</h3>
+          </div>
+          <div class="rs-panel panel-footer text-center" data-toggle="modal" data-target="#myModal">
+            <!-- Click to pop-up modal -->
+            <a>Đặt Vé</a>
+          </div>
+        </div>
+      </div>
+      <!-- ************************** -->
+      <!-- Show Movie List - END -->
+      <!-- ************************** -->
+
+    </div>
+  </div>
+</div>
+<!-- ***********************************************************-->
+<!--******************** List Movie - END ***********************-->
+<!-- ***********************************************************-->
+
+
+<!-- ******************************************** -->
+      <!--******************* Modal pop-up - START -->
+      <!-- ******************************************** -->
+      <div class="modal fade" id="myModal" role="dialog" style="display: none;">
+        <div class="modal-dialog">
+        
+          <!-- Modal content-->
+          <div class="box">
+            <h2>Đăng nhập tài khoản</h2>
+            <form
+                #frmLogin='ngForm' 
+                (ngSubmit)='LoginUsers(frmLogin.value)'
+            >
+                <div class="inputBox">
+                    <input type="text" value=""
+                          id="UserName"
+                          name="UserName" 
+                          #UserName='ngModel' 
+                          ngModel 
+                          required=""
+                    >
+                    <label>Tên đăng nhập</label>
+                </div>
+                <div class="inputBox">
+                    <input type="password" value="" 
+                          id="Password" 
+                          name="Password" 
+                          #Password='ngModel' 
+                          ngModel 
+                          required=""
+                    >
+                    <label>Mật khẩu</label>
+                </div>
+                <div class="form-group">
+                  <!-- Groups -->
+                  <select name="GroupID" 
+                    #GroupID="ngModel"
+                    ngModel
+                    class='form-control'
+                  >
+                      <option *ngFor='let group of groups' [value]="group.ID">{{group.Name}}</option>
+                  </select>
+                </div>
+                <input type="submit" name="" value="Đăng nhập">
+                <a routerLink='/form/signup'>Đăng Kí</a>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- ******************************************** -->
+      <!-- Modal pop-up - END -->
+      <!-- ******************************************** -->
+

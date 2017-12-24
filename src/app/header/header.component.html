@@ -1,0 +1,84 @@
+<!-- <div class="container">
+	<section class="wrrapNavbar">
+		<nav class="navbar navbar-default"> -->
+
+<!-- Brand and toggle get grouped for better mobile display -->
+<!-- <div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+				 aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand animated fadeInUp" routerLink="/">
+					<i>Space
+						<span>Tic!</span>
+					</i>
+				</a>
+			</div> -->
+
+<!-- Collect the nav links, forms, and other content for toggling -->
+<!-- <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="animated zoomIn">
+						<a routerLink="/movielist" routerLinkActive='actived'>Đang chiếu</a>
+					</li>
+					<li class="animated zoomIn">
+						<a routerLink='/form/login'>Đăng Nhập</a>
+					</li>
+				</ul>
+			</div> -->
+<!-- /.navbar-collapse -->
+
+<!-- /.container-fluid -->
+<!-- </nav>
+	</section>
+</div> -->
+
+<div class="container">
+	<div id="MenuIcon">
+		<div id="MenuLine"></div>
+	</div>
+	
+	<div id="MainMenu">
+		<div>
+			<h1>Space<span><i>Tic!</i></span></h1>
+			<div class="showLogin" *ngIf='checkerLogin'>
+				<h3>Xin chào !</h3>
+				<h2><i>{{userLogined.UserName}}</i></h2>
+			</div>
+		</div>
+		<ul>
+			<li routerLink="/" routerLinkActive='actived' [routerLinkActiveOptions]="{exact: true}">HOME
+				<div class="line"></div>
+			</li>
+			<li routerLink="/movielist" routerLinkActive='actived'>ĐANG CHIẾU
+				<div class="line"></div>
+			</li>
+			<li [ngClass]='{"li-class":checkerLogin}' data-toggle="modal" data-target="#myModal">
+				ĐĂNG NHẬP
+				<div class="line"></div>
+			</li>
+			<li [ngClass]='{"li-class":!checkerLogin}'
+				(click)='LogOut()'
+				*ngIf='checkerLogin'
+			>ĐĂNG XUẤT
+				<div class="line"></div>
+			</li>
+		</ul>
+		<div id="close">
+			<img src="../assets/img/Close.png" height="36px" width="36px" />
+			<!-- <span class="glyphicon glyphicon-chevron-left"></span>
+			<span class="glyphicon glyphicon-chevron-left"></span> -->
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+

@@ -1,0 +1,243 @@
+
+
+<div class="box">
+  <h2>Đăng kí tài khoản</h2>
+  <form
+      #frmLogin='ngForm' 
+      (ngSubmit)='SignUpUsers(frmLogin.value)'
+      role="form"
+  >
+      <div class="row">
+
+        
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="inputBox">
+                <input type="text" value=""
+                    minlength="3"
+                    id="LastName"
+                    name="LastName" 
+                    #LastName='ngModel' 
+                    ngModel 
+                    required
+                >
+                <label>Tên</label>
+                
+                <div *ngIf='LastName?.errors && (LastName.dirty || LastName.touched)' class="validate">
+                    <!-- Kiểm tra Tên rỗng -->
+                    <div *ngIf='LastName?.errors.required'>
+                        &#10033; Tên không được trống
+                    </div>
+                    <!-- Kiểm tra độ dài ký tự -->
+                    <div *ngIf='(LastName?.errors.minlength)'>
+                        &#10033; Tên của bạn yêu cầu trên 3 kí tự
+                        </div>
+                </div>
+            </div>  
+        </div>
+        
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="inputBox">
+                <input type="text" value="" 
+                      id="FirstName" 
+                      name="FirstName" 
+                      #FirstName='ngModel' 
+                      ngModel 
+                      required
+                >
+                <label>Họ</label>
+                <div *ngIf='FirstName?.errors && (FirstName.dirty || FirstName.touched)' class="validate">
+                        <!-- Kiểm tra Họ rỗng -->
+                        <div *ngIf='FirstName?.errors.required'>
+                            &#10033; Họ không được trống
+                        </div>
+                        <!-- Kiểm tra độ dài ký tự -->
+                        <div *ngIf='(FirstName?.errors.minlength)'>
+                            &#10033; Họ của bạn yêu cầu trên 3 kí tự
+                            </div>
+                    </div>
+            </div>   
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="inputBox">
+                <input type="text" required
+                    minlength="6" 
+                    id="UserName" 
+                    name="UserName" 
+                    #UserName='ngModel' 
+                    ngModel      
+                >
+                <label>Tên đăng nhập</label>
+                
+                <div *ngIf='UserName.errors && (UserName?.dirty || UserName?.touched)' class="validate">
+                    <!-- Kiểm tra Username rỗng -->
+                    <div *ngIf='UserName?.errors?.required' >
+                        &#10033; Tên đăng nhập không được trống
+                    </div>
+                    <!-- Kiểm tra độ dài ký tự -->
+                    <div *ngIf='(UserName?.errors.minlength)'>
+                        &#10033; Tên đăng nhập yêu cầu trên 6 kí tự
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+      </div>
+
+      <div class="row">
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+              <div class="inputBox">
+                  <input type="password"
+                        id="Password" 
+                        name="Password" 
+                        #Password='ngModel' 
+                        ngModel 
+                        required
+                        #pass
+                  >
+                  <label>Mật khẩu</label>
+                <!-- Kiểm tra Password rỗng -->
+                <div *ngIf='Password?.errors && (Password.dirty || Password.touched)' class="validate">
+                    <div *ngIf='Password?.errors.required'>
+                        &#10033; Mật khẩu không được trống
+                    </div>
+                </div>
+              </div>
+          </div>
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+              <div class="inputBox">
+                  <input type="password"
+                        id="RePassword" 
+                        name="RePassword" 
+                        #RePassword='ngModel' 
+                        ngModel 
+                        required
+                        #repass
+                        [ngClass]="{'ng-invalid': (pass.value != repass.value), 'ng-valid': (pass.value == repass.value)}"
+                  >
+                  <label>Nhập lại mật khẩu</label>
+                  
+                <div *ngIf='RePassword?.errors && (RePassword?.dirty || RePassword?.touched)' class="validate">
+                    <!-- Kiểm tra Password rỗng -->
+                    <div *ngIf='RePassword?.errors.required'>
+                        &#10033; Mật khẩu không được trống
+                    </div>
+                </div>
+                <!-- Kiểm tra pass trùng nhau -->
+                <div *ngIf='repass.errors || (pass.value != repass.value)' class="validate">
+                    <div *ngIf='(pass.value != repass.value)'>
+                        &#10033; Password không trùng khớp
+                    </div>
+                </div>
+              </div>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="inputBox">
+                    <input type="email"
+                        pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                        id="Email" 
+                        name="Email" 
+                        #Email='ngModel' 
+                        ngModel 
+                        required
+                    >
+                    <label>Email</label>
+                    <div *ngIf='Email?.errors && (Email?.dirty || Email?.touched)' class="validate">
+                        <!-- Kiểm tra Email rỗng -->
+                        <div *ngIf='Email?.errors.required'>
+                            &#10033; Email không được rỗng
+                        </div>
+                        <!-- Kiểm tra định dạng Email -->
+                        <div *ngIf='Email?.errors.pattern'>
+                            &#10033; Email không đúng định dạng
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+          </div>
+
+          <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="form-group">
+                    <div class="inputBox">
+                      <input type="number"
+                            minlength="9"
+                            maxlength="25"
+                            id="Phone" 
+                            name="Phone" 
+                            #Phone='ngModel' 
+                            ngModel 
+                            required
+                      >
+                      <label>Số điện thoại</label>
+                      
+                    <div *ngIf='Phone.errors && (Phone?.dirty || Phone?.touched)' class="validate">
+                        <!-- Kiểm tra Phone rỗng -->
+                        <div *ngIf='Phone?.errors.required'>
+                            &#10033; Số điện thoại không được trống
+                        </div>
+        
+                        <!-- Kiểm tra độ dài ký tự -->
+                        <div *ngIf='(Phone?.errors?.minlength || Phone?.errors?.maxlength)'>
+                            &#10033; Số điện thoại yêu cầu trên 13 kí tự
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+      <div class="form-group">
+        <!-- Groups -->
+        <label class='label-dk'>Nhóm</label>
+        <select name="GroupID" 
+          #GroupID="ngModel"
+          ngModel
+          class='form-control'
+          required
+        >
+            <option *ngFor='let group of groups' [value]="group.ID">{{group.Name}}</option>
+        </select>
+        <div *ngIf='GroupID.touched && GroupID.pristine' class="validate">
+                &#10033; Vui lòng chọn nhóm của bạn
+            </div>
+      </div>
+      <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="form-group">
+            <label class='label-dk'>Ngày sinh</label>
+              <!-- Date Picker-->
+              <my-date-picker 
+                name='DateOfBirth' 
+                #DateOfBirth='ngModel' 
+                ngModel 
+                id='DateOfBirth'
+                required
+              ></my-date-picker>
+              <div *ngIf='DateOfBirth.touched && DateOfBirth.pristine' class="validate">
+                    &#10033; Vui lòng chọn ngày sinh của bạn
+                </div>
+            </div>
+
+            
+
+          </div>
+  </div>
+      <input type="submit" name="" value="Đăng kí" [disabled]='!frmLogin.valid' >
+      <a routerLink='/form/login'>Đăng nhập</a>
+  </form>
+</div>
+
+
+
+
+
+
+
+
+
+

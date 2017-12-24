@@ -1,0 +1,92 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+
+
+$boder-color : #29B6F6;
+$bg-color:  #0288D1;
+$btn-color: #039BE5;
+
+html{
+  
+}
+
+body {
+  margin: 0;
+  background-color: $bg-color;
+  font-family: 'Nunito', sans-serif;
+  overflow-x: hidden;
+}
+
+a {
+  color: white;
+}
+
+a:hover {
+  text-decoration: none;
+  color: white;
+}
+
+.container {
+  margin: 0;
+  padding: 0;
+}
+
+
+
+.modal-dialog{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.modal.in .modal-dialog {
+  -webkit-transform: translate(-50%,0);
+  transform: translate(-50%,0);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-transition: "color 9999s ease-out, background-color 9999s ease-out";
+  -webkit-transition-delay: 9999s;   
+}
+
+
+.swal2-content a{
+  color:$boder-color;
+  text-decoration: underline;
+}
+
+.swal2-content a:hover{
+  color:$btn-color;
+
+  cursor: pointer;
+}
+
+
+/* Let's get this party started */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.74); 
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: rgba(97, 90, 90, 0.88); 
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.801); 
+}
+::-webkit-scrollbar-thumb:window-inactive {
+background: rgba(97, 90, 90, 0.7); 
+}

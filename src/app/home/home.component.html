@@ -1,0 +1,236 @@
+<div class="load" style='display:none;'>
+  <div class="loader"></div>
+</div>
+
+
+<div id="mainLoad">
+  <div id="bigsqr">
+      <div id="d1"></div>
+      <div id="d2"></div>
+      <div id="d3"></div>
+      <div id="d4"></div>
+  </div>
+  LOADING
+</div>
+
+
+<!-- Bootstrap Carousel header of homeComponenet - START -->
+<div id="myCarousel" class="carousel slide animated fadeIn" data-ride="carousel" *ngIf='_data'>
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="item active">
+      <img src="../assets/phim/space.jpg" alt="spaceTic" style='width:100%'>
+      <div class="carousel-caption">
+        <h3 class='h3 animated fadeInDownBig'>Welcome to
+          <i>Space
+            <span class='logo-color'>Tic!</span>
+          </i>
+        </h3>
+        <p class='p animated fadeInUpBig'>Easy way to pick your magic tick</p>
+      </div>
+    </div>
+
+    <div class="item">
+      <img src="../assets/phim/ironMan.jpg" alt="ironMan" style='width:100%'>
+      <div class="carousel-caption">
+        <h3 class='h3 animated fadeInDownBig'>Iron-Man 3</h3>
+        <p class='p animated fadeInUpBig'>Rebuil our home!</p>
+      </div>
+    </div>
+
+    <div class="item">
+      <img src="../assets/phim/doctor.jpg" alt="Doctor" style='width:100%'>
+      <div class="carousel-caption">
+        <h3 class='h3 animated fadeInDownBig'>Doctor Strange</h3>
+        <p class='p animated fadeInUpBig'>Strange!</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+<!-- Bootstrap Carousel header of homeComponenet - END -->
+
+
+
+
+
+<!-- ***********************************************************-->
+<!--******************** List Movie - Start ********************-->
+<!-- ***********************************************************-->
+<div class="container-fluid" *ngIf='_data'>
+  <div class="jumbotron">
+    <h1 *ngIf='_data' class='text-center topTitle fadeIn' style='display:none;'>Hôm nay xem gì ?</h1>
+    <br>
+    <br>
+    <br>
+    <!-- You can use owl-carousel selector to include its component -->
+<div style='margin:20px auto; width:70%;' *ngIf='_data'>
+    <owl-carousel #owlEle *ngIf='_data' id='owlCarousel' style='display:none'
+            [options]="{
+              responsive:{
+                '350':{
+                  items:2
+                  
+                },
+                '420':{
+                    items:2
+                    
+                },
+                '720':{
+                    items:3
+            
+                },
+                '1000':{
+                    items:3
+            
+                },
+                '1200':{
+                  items:4
+          
+                }
+              },  
+              items: 5,
+              dots: false,rewind:true, autoplay:true,margin:6,
+              autoplayTimeout:3000,animateIn:true,
+              slideBy:3
+            }" 
+            [items]="MovieList" 
+            [carouselClasses]="['owl-theme', 'row', 'sliding', 'controlsClass', 'autoHeightClass']">
+      <div class="item" *ngFor="let movie of MovieList;let i = index" 
+          [routerLink]="['/moviedetail']" 
+          [queryParams]="{id: movie.ID, groupID: MaNhom}"
+      >
+        <img [src]="urlImage + movie.Image" [alt]="movie.Title" height="280px" id='owl-img'>
+      </div>
+    </owl-carousel>
+  </div>
+    
+  <br><br><br>
+  
+  <div class="row">
+
+      <h1 *ngIf='_data' class='text-center topTitle fadeIn' style='display:none;'>Các phim đang chiếu</h1>
+      <!-- ************************** -->
+      <!-- Show Movie List - START -->
+      <!-- ************************** -->
+      <div class='col-md-4 col-sm-6 my-style' *ngFor='let movie of MovieList'>
+        <div class="rs-panel panel slideanim">
+          <!-- <div class="rs-panel panel-heading text-center">Batman</div> -->
+
+          <!-- Routing truyền vào 1 tham số -->
+          <!-- <div class="rs-panel panel-body contain-listMovie" [routerLink]="['/moviedetail', movie.ID]">
+            <img class='listMovie' [src]="urlImage + movie.Image" [alt]="movie.Title">
+            <h3 class=' rs-btn listTitle'>{{movie.Title}}</h3>
+          </div> -->
+
+          <!-- Routing truyền nhiều tham số -->
+          <div class="rs-panel panel-body contain-listMovie" [routerLink]="['/moviedetail']" [queryParams]="{id: movie.ID, groupID: MaNhom}">
+
+            <img class='listMovie' [src]="urlImage + movie.Image" [alt]="movie.Title">
+            <h3 class=' rs-btn listTitle'>{{movie.Title}}</h3>
+          </div>
+          
+
+          
+          <div class="rs-panel panel-footer text-center">
+            <!-- Click to pop-up modal -->
+            <a data-toggle="modal" data-target="#myModal" style='display:block;'>Đặt Vé</a>
+          </div>
+        
+        </div>
+      </div>
+      <!-- ************************** -->
+      <!-- Show Movie List - END -->
+      <!-- ************************** -->
+
+    </div>
+  </div>
+</div>
+<!-- ***********************************************************-->
+<!--******************** List Movie - END ***********************-->
+<!-- ***********************************************************-->
+
+
+
+
+
+
+<!-- ******************************************** -->
+      <!--******************* Modal pop-up - START -->
+      <!-- ******************************************** -->
+      <div class="modal fade" id="myModal" role="dialog" style="display: none;">
+        <div class="modal-dialog">
+        
+          <!-- Modal content-->
+          <div class="box">
+            <h2>Đăng nhập tài khoản</h2>
+            <form
+                #frmLogin='ngForm' 
+                (ngSubmit)='LoginUsers(frmLogin.value)'
+            >
+                <div class="inputBox">
+                    <input type="text" value=""
+                          id="UserName"
+                          name="UserName" 
+                          #UserName='ngModel' 
+                          ngModel 
+                          required=""
+                    >
+                    <label>Tên đăng nhập</label>
+                </div>
+                <div class="inputBox">
+                    <input type="password" value="" 
+                          id="Password" 
+                          name="Password" 
+                          #Password='ngModel' 
+                          ngModel 
+                          required=""
+                    >
+                    <label>Mật khẩu</label>
+                </div>
+                <div class="form-group">
+                  <!-- Groups -->
+                  <select name="GroupID" 
+                    #GroupID="ngModel"
+                    ngModel
+                    class='form-control'
+                  >
+                      <option *ngFor='let group of groups' [value]="group.ID">{{group.Name}}</option>
+                  </select>
+                </div>
+                <input type="submit" name="" value="Đăng nhập">
+                <a href="/form/signup">Đăng Kí</a>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- ******************************************** -->
+      <!-- Modal pop-up - END -->
+      <!-- ******************************************** -->
+
+
+
+
+
+
+        <footer *ngIf="_data" style="display:none">
+          <h1>Space<i>Tic!</i></h1>
+          <h4>Maintain by</h4>
+          <p>My class Lab</p>
+        </footer>
